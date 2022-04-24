@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <style>
+      /* li 안에 있는 one이라는 클래스를  */
+      li .one {
+        color: red;
+      }
+      li.one {
+        color: blue;
+      }
+      /* 둘다 선택 */
+      .one {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>hello world</h1>
+    <ul>
+      <li>
+        <p class="one">hello world</p>
+      </li>
+      <li><p class="one">hello world</p></li>
+      <li>hello world</li>
+      <li class="one">hello world</li>
+      <li class="one">hello world</li>
+    </ul>
+  </body>
+</html>

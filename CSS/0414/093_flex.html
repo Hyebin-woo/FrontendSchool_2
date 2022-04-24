@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .container {
+        display: flex;
+        height: 100vh;
+        /* flex-wrap: wrap; */
+      }
+      li {
+        /* flex-grow:1 flex-shink:1
+          flex-basis:0 */
+        /* 다 균등하게 나눠가져라 */
+        /* flex:1; */
+        /* 브라우저의 크기가 줄어들어도 넓이는 줄어들지 않는다. (스크롤이 생김) */
+        /* flex: 0 0 100px; */
+        flex: 1 1 100px;
+        /* width: 100px; */
+        box-sizing: border-box;
+        height: 50px;
+        background-color: pink;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>1 aaa</li>
+      <li>2 bb</li>
+      <li>3 cccccccccccccccccc cc</li>
+      <li>4 dd</li>
+      <li>5 e</li>
+      <li>6 f</li>
+      <li>1 aaa</li>
+      <li>2 bb</li>
+      <li>3 cccccccccccccccccc</li>
+      <li>4 dd</li>
+      <li>5 e</li>
+      <li>6 f</li>
+    </ul>
+  </body>
+</html>

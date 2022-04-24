@@ -1,0 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vmin&vmax</title>
+    <style>
+      /* nvmin : 뷰포트에서 짧은 쪽 기준 n배
+    nvmax : 뷰포트에서 긴 쪽 기준 n배 */
+
+      /*
+            1. 브라우저의 크기를 세로가 크게 만들었을 때에는 vmin에 단위가 가로를 100으로 나눈 것이 됨.
+            2. 브라우저의 크기를 가로가 크게 만들었을 때에는 vmin에 단위가 세로를 100으로 나누느 것이 됨.
+            3. vmax는 반대 개념
+      */
+      body {
+        margin: 0;
+        background-color: palevioletred;
+      }
+      div {
+        background-color: white;
+        width: 50vmax;
+        height: 50vmax;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background-color: palevioletred;
+      }
+      .a {
+        background-color: white;
+        width: 20vmax;
+        height: 20vmax;
+      }
+
+      .b {
+        background-color: white;
+        width: 20vmin;
+        height: 20vmin;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a">vmax: 뷰포트에서 긴 쪽 기준 n%</div>
+    <div class="b">vmin: 뷰포트에서 짧은 쪽 기준 n%</div>
+  </body>
+</html>

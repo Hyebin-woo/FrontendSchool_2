@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>속성선택자2</title>
+    <style>
+      /* paullab 정확하게 일치*/
+      /* paullab 이라는 문자열만 정확하게 1개만 가진 것을 선택 */
+      /* 공백도 포함하지 않습니다.  */
+      p[class="paullab"] {
+        font-size: 48px;
+      }
+      /* 단어에 paul 포함되는 것*/
+      p[class="paul"]{
+        text-align: center;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <p class="paul">hello world</p>
+    <p class="paul test">hello world</p>
+    <p class="paultest">hello world</p>
+    <p class="paullab">hello world</p>
+    <p class="koreapaullab">hello world</p>
+    <p class="world">hello world</p>
+  </body>
+</html>

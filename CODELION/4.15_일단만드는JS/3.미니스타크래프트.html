@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스타크래프트</title>
+    <style>
+      .background {
+        position: relative;
+        background-image: url("background.png");
+        background-size: 500px 330px;
+        width: 500px;
+        height: 330px;
+      }
+      #drone {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 100px;
+        left: 60px;
+      }
+      #bunker {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        top: 80px;
+        right: 20px;
+      }
+      #spit {
+        display: none;
+        position: absolute;
+        top: 140px;
+        left: 150px;
+        width: 50px;
+        height: 30px;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background">
+      <img id="drone" src="drone.png" alt="drone" />
+      <img id="spit" src="spit.png" alt="spit" />
+      <img id="bunker" src="bunker.png" alt="bunker" />
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var hp = 3;
+
+      $("#drone").click(function () {
+        // 1. 원래 침 이미지는 css숨어져 있지만 이미지가 나타나도록 -드론을 클릭하면 침이 나오게
+        $("#spit").fadeIn();
+        // 2. 침이 왼쪽에서 250 만큼 가게끔
+        $("#spit").animate({ left: "+=250" });
+
+        // 3. 발사 되서 목표물에 도달한 침이 사라졌다가 
+        $("#spit").fadeout(function () { 
+          // 사라지는 시점에서 줄어들 수 있게! 
+          //Hp: 벙커가 침을 맞으면 HP가 줄어들기
+          $("#hp").text("HP:" + hp);
+          //Hp=0일 때 bunker가 없어지는
+          if(hp==0){
+            $("#bunker").fadeOut();
+          }
+        });
+        //4. 다시 원래 위치로 돌아가는
+        $("#spit").css({ left: "150px" });
+        
+
+
+      });
+    </script>
+  </body>
+</html>
