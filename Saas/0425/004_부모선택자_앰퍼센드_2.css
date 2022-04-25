@@ -1,0 +1,9 @@
+ol li:hover {
+  background: white;
+  cursor: pointer;
+}
+
+ol li:last-child {
+  border-bottom: 2px solid black;
+}
+/*# sourceMappingURL=004_부모선택자_앰퍼센드_2.css.map */

@@ -1,3 +1,4 @@
 # FrontendSchool_2
-프론트엔드 스쿨 2기
-수업-실습 내용 입니다.
+
+멋쟁이사자처럼 Frontend School 2기
+수업-실습 내용입니다.

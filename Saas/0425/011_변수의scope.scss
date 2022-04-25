@@ -1,0 +1,12 @@
+$value: green;
+.one {
+  //$value: red !global;
+  $value: red;
+  color: $value;
+  .two {
+    color: $value;
+  }
+}
+.three {
+  color: $value;
+}

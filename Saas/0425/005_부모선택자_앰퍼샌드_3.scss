@@ -1,0 +1,13 @@
+//Scss
+.box {
+  &-yellow {
+    background: #ff6347;
+  }
+  &-red {
+    background: #ffd700;
+  }
+  &-green {
+    background: #9acd32;
+  }
+}
+//.box라는 이름이 같기 때문에 &를 사용해 중첩구조로 만들 수 있다

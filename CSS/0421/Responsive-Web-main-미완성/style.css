@@ -133,17 +133,42 @@ strong {
 
 /* 태블릿 */
 @media (max-width: 768px) {
-  .wap {
+  body {
+    font-size: 1rem;
+    word-break: keep-all;
   }
-  .field-video {
-    margin: 0 auto;
-    width: 344px;
-    height: 198px;
+
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
   }
-  .field-book {
-    margin: 0 auto;
-    width: 344px;
-    height: 198px;
+
+  .section-field {
+    margin-top: 6rem;
+    gap: 2rem;
+  }
+
+  .section-field ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-field ul li a {
+    display: inline-block;
+    font-size: 2.4rem;
+  }
+  .section-field .field-title {
+    width: calc(100% - 1rem);
+    top: 3rem;
+    left: 3rem;
+    font-size: 2.4rem;
+  }
+
+  .section-field .field-go {
+    bottom: 2.5rem;
+    right: 2rem;
+    font-size: 1.6rem;
   }
 }
 

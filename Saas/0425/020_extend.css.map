@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAMA,AANA,IAMI,CANM;EACR,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,gBAAgB,EAAE,GAAG;CACtB;;AAED,AAAA,IAAI,CAAC;EAEH,MAAM,EAAE,eAAe;CACxB",
+    "sources": [
+        "020_extend.scss"
+    ],
+    "names": [],
+    "file": "020_extend.css"
+}
