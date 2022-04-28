@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      let num;
+
+      num = Math.floor(Math.random() * 21 + 1);
+
+      console.log(num);
+
+      // 두 정수 사이에 랜덤한 정수 뽑아내기
+      function myRandom(min, max) {
+        let num = Math.floor(Math.random() * (max - min + 1)) + min;
+        return num;
+      }
+
+      document.write(myRandom(3, 10));
+    </script>
+  </body>
+</html>
