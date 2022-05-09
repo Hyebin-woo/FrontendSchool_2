@@ -65,7 +65,7 @@
     name: person.name,
     age: person.age,
   }));
-
+  console.log(user.map((x) => [x._id, x.name, x.age]));
   console.log(arr);
 
   // 2. user의 age가 27 이상인 사람의 데이터를 id만 추출해주세요
@@ -85,8 +85,9 @@
   console.log(sum / user.length);
 
   // 5.  user의 성비를 구해주세요.
-  // [{male : 1}, {famale : 2}]
-  //   const mrate = user.reduce((prev, curr) => prev + curr["gender"] === "male";
+  //
 
-  //   console.log(mrate);
+  (user.filter((i) => i.gender == "male").length / user.length) * 100 + "%";
+
+  (user.filter((i) => i.gender == "male").length / user.length) * 100 + "%";
 </script>
