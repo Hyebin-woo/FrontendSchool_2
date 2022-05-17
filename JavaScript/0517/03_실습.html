@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 실습 : 음식 이름의 배열을 전달하면 배열안에서 랜덤하게 메뉴를 뽑아내는 로봇객체의 생성자를 만들어보세요.
+      const foodArr = ["만두", "떡볶이", "떡국", "쭈구미"];
+      function NewFactory(foodname) {
+        this.name = foodname;
+        this.sayfood = function () {
+          // Math.random 0이상 1미만
+          //  this.menu.length 써도 된다?
+          console.log();
+
+          console.log(
+            `삐리비리. 주인님이 먹을 음식은  ${
+              this.name[Math.floor(Math.random() * foodArr.length)]
+            }입니다. 주인님.`
+          );
+        };
+      }
+      const robot2 = new NewFactory(foodArr);
+    </script>
+  </body>
+</html>

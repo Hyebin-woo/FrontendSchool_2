@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // 생성자 함수 안에서의 this는 인스턴스를 참조한다
+      function NewFactory(name) {
+        this.name = name;
+        this.sayYourName = function () {
+          console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+        };
+      }
+      const robot1 = new NewFactory("재현");
+
+      // robot1.sayYourName()
+    </script>
+  </body>
+</html>

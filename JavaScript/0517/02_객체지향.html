@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //객체 지향의 객체는 우리가 표현하고자 하는 구체적인 사물을 추상적으로 표현한것
+      // 객체는 행동과 상태를 가집니다. 여기서 행동은 메소드, 상태는 프로퍼티 정도
+      // 객체와 객체가 서로 메소드를 통해 상호작용하게 하는것이 바로 객체지향 프로그래밍
+
+      // 하지만 문제가 있습니다. 우리가 만들어낸 객체는 한번 생성하고 나면 끝입니다
+      const me = {
+        name: "웨빈",
+        address: "경기도 화성시",
+        phoneNum: "010-1234-5678",
+        canWalk: function () {
+          console.log("혜빈이가 걷는다.");
+        },
+        teaching: function (student) {
+          student.levelUp();
+        },
+      };
+
+      // 레벨 프로퍼티, 레벨업 메소드
+      const student = {
+        level: 1,
+        levelUp: function () {
+          this.level++;
+        },
+      };
+
+      // me.teaching(student);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          const btn = document.querySelector('.btn-select');
+        const list = document.querySelector(".list-member");
+
+        const arrLang = ['Python', 'Java', 'JavaScript', 'C#', 'C/C++'];
+
+        arrLang.forEach((item) => {
+            const li = document.createElement('li');
+            const btn = document.createElement('button');
+
+            btn.setAttribute('type', 'button');
+            // <button type="button"></button>
+            btn.textContent = item;
+            list.appendChild(li);
+            li.appendChild(btn);
+
+        });
+
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('on');
+        });
+
+        list.addEventListener('click', (event) => {
+            if (event.target.nodeName === 'BUTTON') {
+                btn.textContent = event.target.textContent;
+                btn.classList.remove('on');
+            }
+        });
+    </script>
+</body>
+</html>
