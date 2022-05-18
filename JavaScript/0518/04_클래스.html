@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      class RobotClass {
+        // 생성자함수 역할 function 생략
+        constructor(name) {
+          this.name = name; // this는 인스턴스를 참조
+        }
+        sayYourName() {
+          //프로토타입을 만들 필요가 없다
+          console.log(`내 이름은 ${this.name}다`);
+        }
+      }
+      const botClass1 = new RobotClass("쯔쯔");
+    </script>
+  </body>
+</html>

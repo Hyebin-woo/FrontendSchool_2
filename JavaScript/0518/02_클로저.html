@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var outer = function () {
+        var a = 1;
+        // 외부에서 접근할 수 없는 폐쇄된 공간
+        // 비공개 프로퍼티
+
+        var inner = function () {
+          var b = 6;
+          var c = 7;
+          a = a + b + c;
+          console.log(a);
+        };
+        //inner();
+        return inner;
+      };
+
+      //그런데 만약 내부 함수가 외부 함수보다 오래 살아 있는 경우에,
+      // 외부함수에 있던 변수들은 어떻게 될까요?
+      var newInner = outer(); // 여기서 outer는 실행이 끝남
+      newInner();
+      // outer가 끝난 지점에서 a를 찾아야 하는데 정상작동 할 것인가?
+      // 답: 접근가능하다 (=스코프체인은 살아있다.)
+      // 자바에서는 private 라는 키워드 붙이면 비공개 프로퍼티 -> js에서는 클로저
+
+      // 내부함수가 이미 끝난 외부함수를 연결시켜준다?
+    </script>
+  </body>
+</html>

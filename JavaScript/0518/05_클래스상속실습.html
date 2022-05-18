@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      class Sausage {
+        constructor(taste1, taste2) {
+          this.taste1 = taste1;
+          this.taste2 = taste2;
+        }
+
+        saySausage() {
+          console.log(`${this.taste1} 와 ${this.taste2}맛이 난다.`);
+        }
+      }
+      const sausage = new Sausage("마늘", "양파");
+
+      class FireSausage extends Sausage {
+        constructor(taste1, taste2) {
+          super(taste1, taste2); //상속받을 것
+        }
+        // constructor(taste1) {
+        //   super(taste1);
+        //   this.taste2 = "불";
+        // }
+        saySausage() {
+          console.log(
+            `${this.taste1} 와 ${this.taste2} 맛이 난다. 뿔맛도 난다.`
+          );
+        }
+      }
+
+      const babysausage = new FireSausage("마늘", "양파");
+
+      // 강사님 코드
+      //   class Sausage {
+      //         constructor(el1, el2) {
+      //             this.inside1 = el1;
+      //             this.inside2 = el2;
+      //         }
+
+      //         taste() {
+      //             console.log(`${this.inside1}와 ${this.inside2}의 맛이 난다!!`);
+      //         }
+      //     }
+
+      // const sausage = new Sausage('소고기', '돼지고기');
+
+      // class FireSausage extends Sausage {
+      //     constructor(el1, el2, el3) {
+      //         super(el1, el2);
+      //         this.inside3 = el3;
+      //     }
+
+      //     taste() {
+      //         console.log(`${this.inside1}와 ${this.inside2}의 맛이 난다!! 불맛도 난다!!`);
+      //     }
+      // }
+
+      // const fireSausage = new FireSausage('소고기', '돼지고기');
+    </script>
+  </body>
+</html>
