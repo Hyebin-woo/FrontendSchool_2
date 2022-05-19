@@ -9,6 +9,7 @@
   <body>
     <script>
       class Robot {
+        // # 키워드를 이용하면 프로퍼티를 비공개로 전환
         #password;
 
         constructor(name, pw) {
@@ -28,6 +29,8 @@
           this.#password = pw;
         }
       }
+
+      const bot = new Robot("영웅");
     </script>
   </body>
 </html>

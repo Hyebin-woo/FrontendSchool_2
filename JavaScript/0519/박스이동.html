@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 300px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        /* transition: 0.3s; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      const box = document.querySelector(".box");
+      let pos = 0;
+      let keys = {};
+
+      function move(event) {
+        keys[event.key] = true;
+        console.log(keys);
+      }
+
+      function stop(event) {
+        keys[event.key] = false;
+        console.log(keys);
+      }
+
+      document.addEventListener("keydown", move);
+      document.addEventListener("keyup", stop);
+
+      function play() {
+        if (keys.ArrowRight) {
+          pos += 5;
+          box.style.transform = `translateX(${pos}px)`;
+        }
+        if (keys.ArrowLeft) {
+          pos -= 5;
+          box.style.transform = `translateX(${pos}px)`;
+        }
+
+        window.requestAnimationFrame(play);
+      }
+
+      window.requestAnimationFrame(play);
+
+      // 이렇게 하면 계속 키보드를 누를시 버벅 거림.!
+      //   addEventListener("keydown", (event) => {
+      //     const key = event.key;
+      //   if (key.ArrowRight) {
+      //       pos += 5;
+      //       box.style.transform = `translateX(${pos}px)`;
+      //     }
+      //     if (key.ArrowLeft) {
+      //       pos -= 5;
+      //       box.style.transform = `translateX(${pos}px)`;
+      //     }
+      //
+      //   });
+    </script>
+  </body>
+</html>
