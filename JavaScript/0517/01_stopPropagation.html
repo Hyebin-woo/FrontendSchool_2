@@ -17,12 +17,16 @@
         console.log("clicked");
         event.preventDefault();
         // 이벤트 전파를 막고 싶다면
-        // event.stopPropagation();
+        event.stopPropagation();
       });
 
-      document.body.addEventListener("click", () => {
-        console.log("event still alive!");
-      });
+      document.body.addEventListener(
+        "click",
+        () => {
+          console.log("event still alive!");
+        },
+        true
+      );
     </script>
   </body>
 </html>

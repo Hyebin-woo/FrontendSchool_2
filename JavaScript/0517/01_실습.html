@@ -29,35 +29,35 @@
       const btns = document.querySelectorAll("button");
 
       // for (let i = 0; i < txts.length; i++) {
-      //     txts[i].addEventListener('click', (event) => {
-      //         alert(event.target.textContent.slice(0, -2));
-      //         alert(event.target.firstChild.textContent);
-      //     })
+      //   txts[i].addEventListener("click", (event) => {
+      //     alert(event.target.textContent.slice(0, -2));
+      //     // alert(event.target.firstChild.textContent);
+      //   });
       // }
 
       // txts 유사배열인 노드리스트라 포이치는 IE불가능
-      Array.prototype.forEach.call(txts, (item) => {
-        item.addEventListener("click", (event) => {
-          // alert(event.target.textContent.slice(0, -2));
-          alert(event.target.firstChild.textContent);
-        });
-      });
+      // Array.prototype.forEach.call(txts, (item) => {
+      //   item.addEventListener("click", (event) => {
+      //     // alert(event.target.textContent.slice(0, -2));
+      //     alert(event.target.firstChild.textContent);
+      //   });
+      // });
 
       // 삭제하면 또 창이 오는 것은 버블링..
       // 이벤트 버블링으로 부모요소에 있는 p태그의 alert이벤트가 실행되어 버려서!
       // 이걸 막기위해서 stopPropagation 쓰는 것
-      for (const item of btns) {
-        item.addEventListener("click", (event) => {
-          let result = confirm("삭제하시겠습니까?");
-          event.stopPropagation();
-          if (result) {
-            item.parentElement.remove();
-          }
-        });
-      }
+      // for (const item of btns) {
+      //   item.addEventListener("click", (event) => {
+      //     let result = confirm("삭제하시겠습니까?");
+      //     // event.stopPropagation();
+      //     if (result) {
+      //       item.parentElement.remove();
+      //     }
+      //   });
+      // }
 
       // 전파 말고 이벤트위임을 사용해서 if문 안에서 처리하니까 이벤트전파가 일어나지 않음
-      /*    document.body.addEventListener("click", function (e) {
+      document.body.addEventListener("click", function (e) {
         console.log(e.target.nodeName);
         if (e.target.nodeName === "BUTTON") {
           if (confirm("삭제할꺼야?")) {
@@ -71,7 +71,7 @@
             )
           );
         }
-      }); */
+      });
     </script>
   </body>
 </html>
