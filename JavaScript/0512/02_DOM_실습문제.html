@@ -31,6 +31,9 @@
         width: 500px;
         margin: 50px auto 0;
       }
+      li {
+        list-style: none;
+      }
     </style>
   </head>
 
@@ -41,52 +44,42 @@
       <li><button type="button" class="btn-yellow">노랑</button></li>
       <li><button type="button" class="btn-green">초록</button></li>
     </ul>
-  </body>
+    <script>
+      const canvas = document.querySelector(".canvas");
+      const btnRed = document.querySelector(".btn-red");
+      const btnYellow = document.querySelector(".btn-yellow");
+      const btnGreen = document.querySelector(".btn-green");
 
-  <script>
-    const canvas = document.querySelector(".canvas");
-    const btnRed = document.querySelector(".btn-red");
-    const btnYellow = document.querySelector(".btn-yellow");
-    const btnGreen = document.querySelector(".btn-green");
-
-    // btnRed.addEventListener('click', () => {
-    //     canvas.classList.remove('yellow', 'green');
-    //     canvas.classList.add('red');
-    // });
-
-    // btnYellow.addEventListener('click', () => {
-    //     canvas.classList.remove('red', 'green');
-    //     canvas.classList.add('yellow');
-    // });
-
-    // btnGreen.addEventListener('click', () => {
-    //     canvas.classList.remove('red', 'yellow');
-    //     canvas.classList.add('green');
-    // });
-    // btnGreen.addEventListener('click', () => {
-    //     canvas.classList.remove('red', 'yellow');
-    //     canvas.classList.add('green');
-    // });
-
-    // btnGreen.addEventListener('click', () => {
-    //     canvas.classList.remove('red', 'yellow');
-    //     canvas.classList.add('green');
-    // });
-
-    /* forEach 사용하기  */
-    const btnArr = [btnRed, btnYellow, btnGreen];
-
-    btnArr.forEach((element) => {
-      element.addEventListener("click", () => {
-        canvas.classList.remove("red", "green", "yellow");
-        if (element.className === "btn-red") {
-          canvas.classList.add("red");
-        } else if (element.className === "btn-yellow") {
-          canvas.classList.add("yellow");
-        } else {
-          canvas.classList.add("green");
-        }
+      btnRed.addEventListener("click", () => {
+        canvas.classList.remove("yellow", "green");
+        canvas.classList.add("red");
       });
-    });
-  </script>
+
+      btnYellow.addEventListener("click", () => {
+        canvas.classList.remove("red", "green");
+        canvas.classList.add("yellow");
+      });
+
+      btnGreen.addEventListener("click", () => {
+        canvas.classList.remove("red", "yellow");
+        canvas.classList.add("green");
+      });
+
+      /* forEach 사용하기  */
+      // const btnArr = [btnRed, btnYellow, btnGreen];
+
+      // btnArr.forEach((element) => {
+      //   element.addEventListener("click", () => {
+      //     canvas.classList.remove("red", "green", "yellow");
+      //     if (element.className === "btn-red") {
+      //       canvas.classList.add("red");
+      //     } else if (element.className === "btn-yellow") {
+      //       canvas.classList.add("yellow");
+      //     } else {
+      //       canvas.classList.add("green");
+      //     }
+      //   });
+      // });
+    </script>
+  </body>
 </html>

@@ -311,7 +311,7 @@ console.log(a, b, c);
   set.add(2);
   set.add(3);
   set.add(3);
-  set.add(3);
+  set.add(3);   
   set.add(3);
   set.size;
   // let set = new Set([1, 2, 3, 3, 3, 3])
