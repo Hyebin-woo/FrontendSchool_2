@@ -150,6 +150,7 @@ console.log(a, b, c);
 - 비교연산(>, >=, <, <=, ==, !=, ===, !==)
 - 단항연산자(++x, x++, --x, x--)
 - ??(nullish 병합연산자)
+
   ```js
   let result1;
   let result2 = result1 ?? 100;
@@ -157,6 +158,7 @@ console.log(a, b, c);
   let result3 = 10;
   let result4 = result3 ?? 100;
   ```
+
 - ?(삼항연산자)
   ```js
   let x = true ? 10 : 100;
@@ -311,7 +313,7 @@ console.log(a, b, c);
   set.add(2);
   set.add(3);
   set.add(3);
-  set.add(3);   
+  set.add(3);
   set.add(3);
   set.size;
   // let set = new Set([1, 2, 3, 3, 3, 3])
