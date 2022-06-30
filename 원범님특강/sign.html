@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>회원가입</title>
+  </head>
+
+  <body>
+    <div id="root">
+      <section class="email-pw">
+        <h2 class="main-title">이메일로 회원가입</h2>
+        <div class="input-container">
+          <label for="emailInput">이메일</label>
+          <input
+            type="email"
+            id="emailInput"
+            data-state="0"
+            placeholder="이메일 주소를 알려주세요."
+          />
+        </div>
+        <div class="input-container input-container-pw">
+          <label for="passwordInput">비밀번호</label>
+          <input
+            type="password"
+            id="passwordInput"
+            data-state="0"
+            placeholder="비밀번호를 설정해 주세요."
+          />
+        </div>
+        <button type="button" class="next-btn">다음</button>
+      </section>
+
+      <section class="profile" style="display: none">
+        <h2 class="main-title join-profile-title">프로필 설정</h2>
+        <p class="profile-info-txt">나중에 언제든지 변경할 수 있습니다.</p>
+        <label for="profileImg">
+          <img
+            src="http://146.56.183.55:5050/Ellipse.png"
+            alt=""
+            srcset=""
+            id="imagePre"
+          />
+        </label>
+        <input
+          type="file"
+          id="profileImg"
+          name="profile-img"
+          accept="image/*"
+          class="ir"
+        />
+        <div class="input-container">
+          <label for="userNameInput">사용자 이름</label>
+          <input
+            type="text"
+            id="userNameInput"
+            data-state="0"
+            placeholder="2~10자 이내여야 합니다."
+          />
+        </div>
+        <div class="input-container">
+          <label for="userIdInput">계정 ID</label>
+          <input
+            type="text"
+            id="userIdInput"
+            data-state="0"
+            placeholder="영문, 숫자, 특수문자(,), (_)만 사용 가능합니다."
+          />
+        </div>
+        <div class="input-container input-container-intro">
+          <label for="userIntroInput">소개</label>
+          <input
+            type="text"
+            id="userIntroInput"
+            data-state="1"
+            placeholder="자신과 판매할 상품에 대해 소개해 주세요."
+          />
+        </div>
+        <button type="button" class="submit-btn">감귤마켓 시작하기</button>
+      </section>
+    </div>
+  </body>
+  <script>
+    // ----------------------------------------------------------------------
+    const $emailPwForm = document.querySelector("#root > section.email-pw");
+    const $profileForm = document.querySelector("#root > section.profile");
+
+    //서버와 통신하는 기능을 하는 함수는 오래걸림.
+    //따라서 비동기적으로 처리되기 때문에
+    //async await을 통해 응답을 기다리고 받는 과정이 필요함.
+
+    async function checkEmailValid(email) {
+      // http 서버 주소
+      const url = "https://mandarin.api.weniv.co.kr";
+      // 전송할 때 필요한 url
+      const emailValidReqPath = "/user/emailvalid";
+
+      // Request시 body에 들어가는 데이터
+      // body에 담아줄 땐 Json.stringify()를 통해 문자열로 바꿔줘야함
+      const reqData = {
+        user: {
+          email: email, //사용자가 입력한 이메일 value가 들어감
+        },
+      };
+
+      //fetch(요청할url, 요청할때설정)
+      //fetch(url, 객체=요청에 대한 내용이 담겨있음)
+      //fetch의 반환값은 Promise
+      try {
+        const res = await fetch(url + emailValidReqPath, {
+          //method : 옵션을 POST로 지정해주고
+          method: "POST",
+          //headers 옵션을 통해 JSON 포멧을 사용한다고 알려줘야 한다
+          //서버에게 어떤 형식의 데이터가 실제로 보내지는 것인지 알려주는 용도
+          //application/json : 애플리케이션간 데이터 통신에서 JSON형식이 사용된다라는 의미
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(reqData),
+          //요청 전문을 JSON 포멧으로 직렬화
+          //가장 중요한 body 옵션에 설정해줍니다.
+          //아까 만들어준 loginData를 stringify로 직렬화하여 body에 담아줌
+        });
+
+        const json = await res.json();
+        console.log(json);
+        const reqMsg = json.message;
+        console.log(reqMsg == "이미 가입된 이메일 주소 입니다.", reqMsg);
+        if (reqMsg == "이미 가입된 이메일 주소 입니다.") {
+          return false;
+        } else {
+          return true;
+        }
+      } catch (error) {}
+    }
+
+    function checkPasswordValid(password) {
+      //password가 6글자 이상인경우에 true반환
+      return true;
+    }
+    const getEmailPw = () => {
+      const email = document.querySelector("#emailInput").value;
+      const pw = document.querySelector("#passwordInput").value;
+      return [email, pw];
+    };
+    async function checkValid() {
+      const [email, pw] = getEmailPw();
+      console.log(email);
+      const emailCheckedResult = await checkEmailValid(email);
+      const passwordCheckedResult = await checkPasswordValid(pw);
+
+      if (emailCheckedResult && passwordCheckedResult) {
+        $emailPwForm.style.display = "none";
+        $profileForm.style.display = "block";
+      }
+    }
+    const $nextButton = document.querySelector(
+      "#root > section.email-pw > button"
+    );
+    $nextButton.addEventListener("click", checkValid);
+
+    const url = "https://mandarin.api.weniv.co.kr";
+
+    // 이미지 업로드해서 url받아오기
+    async function imageUpload(file) {
+      const formData = new FormData();
+      formData.append("image", file);
+      const imageUploadReqPath = "/image/uploadfile";
+      const res = await fetch(url + imageUploadReqPath, {
+        method: "POST",
+        body: formData,
+      });
+      console.log(res);
+      const json = await res.json();
+      console.log(json);
+      return url + "/" + json.filename;
+    }
+    async function handleGetImageUrl(e) {
+      console.log(e.target.files);
+      const file = e.target.files[0];
+      const imgSrc = await imageUpload(file);
+      document.querySelector("#imagePre").src = imgSrc;
+    }
+    const $profileImageInput = document.querySelector("#profileImg");
+    $profileImageInput.addEventListener("change", handleGetImageUrl);
+
+    //계정중복검사
+    async function checkAccountnameValid(userId) {
+      console.log(userId);
+      if (userId == "") {
+        return false;
+      }
+      const reqData = {
+        user: {
+          accountname: "werewrewrwrew",
+        },
+      };
+      console.log(url + "/user/accountnamevalid");
+      const res = await fetch(url + "/user/accountnamevalid", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(reqData),
+      });
+      const json = await res.json();
+      if (json.message == "사용 가능한 계정ID 입니다.") {
+        return true;
+      }
+      return false;
+    }
+    //회원가입
+    async function join() {
+      const email = document.querySelector("#emailInput").value;
+      const password = document.querySelector("#passwordInput").value;
+      const userName = document.querySelector("#userNameInput").value;
+      const userId = document.querySelector("#userIdInput").value;
+      const intro = document.querySelector("#userIntroInput").value;
+      const imageUrl = document.querySelector("#imagePre").src;
+      const checkedIdResult = await checkAccountnameValid(userId);
+      console.log(checkedIdResult);
+      if (checkedIdResult) {
+        const joinData = {
+          user: {
+            username: userName,
+            email: email,
+            password: password,
+            accountname: userId,
+            intro: intro,
+            image: imageUrl,
+          },
+        };
+        fetch(url + "/user", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(joinData),
+        });
+      }
+    }
+    const $joinButton = document.querySelector(
+      "#root > section.profile > button"
+    );
+    $joinButton.addEventListener("click", join);
+  </script>
+</html>
