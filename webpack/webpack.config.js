@@ -1,5 +1,12 @@
 const path = require('path');
-const myLoader = require('./myLoader');
+// const myLoader = require('./myLoader');
+const webpack = require('webpack');
+const childProcess = require('child_process');
+const dotenv = require('dotenv');
+dotenv.config();
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 module.exports = {
     mode: 'development',
@@ -31,10 +38,27 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 20 * 1024
+                        maxSize: 200 * 1024
                     }
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: `
+                Commit version : ${childProcess.execSync('git rev-parse --short HEAD')}
+                Committer name : ${childProcess.execSync('git config user.name')}
+                Commit Date : ${new Date().toLocaleString()}
+            `
+        }),
+        new webpack.DefinePlugin({
+            dev: JSON.stringify(process.env.DEV_API),
+            pro: JSON.stringify(process.env.PRO_API)
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+        new CleanWebpackPlugin()
+    ]
 }
